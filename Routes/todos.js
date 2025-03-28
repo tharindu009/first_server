@@ -1,15 +1,23 @@
 import express from 'express';
+import axios from 'axios';
 
 const todoRouter = express.Router();
 
-let todoList = [
-    {
-        userId: 1,
-        id: 1,
-        title: "delectus aut autem",
-        completed: false
+let todoList = [];
+
+async function  fetchInitialData() {
+    try {
+        const response = await axios.get("https://jsonplaceholder.typicode.com/todos");   
+        // console.log(response);
+        todoList= response.data;
+    } 
+    catch (error) {
+        console.error(error);
+        throw error;
     }
-]
+}
+
+fetchInitialData();
 
 
 todoRouter.get('/', (req, res) => {

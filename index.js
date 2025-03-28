@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import todoRouter from './Routes/todos.js';
 
 const app = express();
-const PORT = 4000;
+const PORT = 8080;
 
 app.use(bodyParser.json());
 
